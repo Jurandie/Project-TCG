@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +8,13 @@ namespace GameLogic
     {
         public enum TurnOwner { Player, Enemy }
 
-        [Header("Referências")]
+        [Header("ReferÃªncias")]
         public DeckManager deckManager;
         public DiceRoller_Stable2025 diceRoller;
         public EnergyManager energyManager;
         public LifeManager lifeManager;
         public CharacterAttributeManager attributeManager;
+        public EnemyAIController enemyAI;
 
         [Header("UI")]
         public Button endPhaseButton;
@@ -47,8 +48,7 @@ namespace GameLogic
 
             if (endPhaseButton != null)
             {
-                bool canEnd = currentTurn == TurnOwner.Player &&
-                    !IsGameOver() &&
+                bool canEnd = !IsGameOver() &&
                     !IsWaitingForAttributeRoll(TurnOwner.Player);
                 endPhaseButton.interactable = canEnd;
             }
@@ -103,7 +103,10 @@ namespace GameLogic
                 if (owner == TurnOwner.Player)
                     Debug.Log("[TurnManager] Role o dado para gerar os atributos do jogador.");
                 else
-                    Debug.Log("[TurnManager] Inimigo aguarda rolagem manual para definir atributos.");
+                {
+                    Debug.Log("[TurnManager] Inimigo aguarda rolagem para definir atributos.");
+                    StartCoroutine(AutoRollEnemyAttributes());
+                }
 
                 return;
             }
@@ -139,9 +142,33 @@ namespace GameLogic
             UpdateTurnUI();
 
             if (owner == TurnOwner.Enemy)
-                StartCoroutine(EnemyRoutine());
+            {
+                if (enemyAI != null)
+                    enemyAI.BeginTurn();
+                else
+                    StartCoroutine(EnemyRoutine());
+            }
             else
-                Debug.Log("[TurnManager] É o turno do jogador — clique no dado para rolar.");
+            {
+                Debug.Log("[TurnManager] Turno do jogador - clique no dado para rolar.");
+            }
+        }
+
+        IEnumerator AutoRollEnemyAttributes()
+        {
+            yield return new WaitForSeconds(0.4f);
+
+            if (diceRoller == null)
+            {
+                Debug.LogWarning("[TurnManager] Nenhum DiceRoller atribuÃ­do para rolagem automÃ¡tica.");
+                yield break;
+            }
+
+            diceRoller.RollDiceForTurn((res) =>
+            {
+                if (attributeManager != null && attributeManager.TryApplyInitialRoll(TurnOwner.Enemy, res))
+                    NotifyAttributeRollComplete(TurnOwner.Enemy);
+            }, true);
         }
 
         IEnumerator EnemyRoutine()
@@ -195,3 +222,5 @@ namespace GameLogic
         }
     }
 }
+
+

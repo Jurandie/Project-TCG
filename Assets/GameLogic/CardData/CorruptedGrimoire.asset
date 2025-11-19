@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d0af917cf54bc789bb07c417f4222f, type: 3}
+  m_Name: CorruptedGrimoire
+  m_EditorClassIdentifier: Assembly-CSharp::GameLogic.CardData
+  cardName: CorruptedGrimoire
+  artwork: {fileID: -148338437567907979, guid: 778315ee1e9b91449bc89926fc09d373, type: 3}
+  cardBackOverride: {fileID: -6875453648780878723, guid: 80f261425b3fc534c88c7ed8bff214d7, type: 3}
+  attack: 1
+  defense: 1
+  maxHealth: 10
+  armor: 0
+  energyCost: 1
+  keywords: []
+  loreDescription: 
+  cardType: 1
+  spellEffect: {fileID: 11400000, guid: d2d2064a515386b47936922aac325abf, type: 2}
+  destroyAfterCast: 1
+  durability: 0
+  isTranscendentFormAvailable: 0
+  evolutionStages: []
+  copies: 1

@@ -137,6 +137,15 @@ namespace GameLogic
 
         private CharacterStatBlock BuildStatBlock(TurnManager.TurnOwner owner, int diceResult)
         {
+            var block = CreateStatBlock(diceResult);
+
+            block.maxLife = CalculateLifeFromCon(block.constitution);
+            ApplyOwnerResults(owner, block);
+            return block;
+        }
+
+        CharacterStatBlock CreateStatBlock(int diceResult)
+        {
             var block = new CharacterStatBlock();
             block.criticalRoll = Mathf.Clamp(diceResult, 1, 20);
             ApplyStatusAndPointAdjustment(block);
@@ -175,6 +184,16 @@ namespace GameLogic
             block.charisma = values[5];
             block.maxLife = CalculateLifeFromCon(block.constitution);
             return block;
+        }
+
+        void ApplyOwnerResults(TurnManager.TurnOwner owner, CharacterStatBlock block)
+        {
+            // placeholder for future owner-specific adjustments if needed.
+        }
+
+        public CharacterStatBlock GenerateTemporaryStatBlock(int diceResult)
+        {
+            return CreateStatBlock(Mathf.Clamp(diceResult, 1, 20));
         }
 
         private void ApplyStatusAndPointAdjustment(CharacterStatBlock block)

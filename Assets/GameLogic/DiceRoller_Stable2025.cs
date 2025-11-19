@@ -19,6 +19,7 @@ namespace GameLogic
         public TurnManager turnManager;
         public DeckManager deckManager;
         public EnergyManager energyManager;
+        [SerializeField] TranscendentAttackManager transcendentAttackManager;
 
         [Header("Visual")]
         public Transform visualTransformOverride;
@@ -37,8 +38,10 @@ namespace GameLogic
         {
             fixedPosition = transform.position;
             visualTransform = visualTransformOverride != null ? visualTransformOverride :
-                              (diceRenderer != null ? diceRenderer.transform : transform);
+                          (diceRenderer != null ? diceRenderer.transform : transform);
             if (enableDebugLogs) Debug.Log("[DiceRoller] Ready.");
+            if (transcendentAttackManager == null)
+                transcendentAttackManager = FindFirstObjectByType<TranscendentAttackManager>();
         }
 
         void Update()
@@ -79,7 +82,16 @@ namespace GameLogic
                 return;
             }
 
-            EnergyManager em = energyManager != null ? energyManager : (turnManager != null ? turnManager.energyManager : null);
+            bool attributeRoll = NeedsAttributeRoll(TurnManager.TurnOwner.Player);
+
+            if (!attributeRoll && transcendentAttackManager != null &&
+                transcendentAttackManager.HasPendingAttack(TurnManager.TurnOwner.Player))
+            {
+                RollDiceForTurn((res) => transcendentAttackManager.ResolvePendingAttack(res), true);
+                return;
+            }
+
+            EnergyManager em = attributeRoll ? null : (energyManager != null ? energyManager : (turnManager != null ? turnManager.energyManager : null));
             if (em != null)
             {
                 if (!em.CanRollDice(TurnManager.TurnOwner.Player))
@@ -95,14 +107,21 @@ namespace GameLogic
                 }
             }
 
-            RollDiceForTurn((res) =>
+            if (attributeRoll)
             {
-                if (deckManager != null)
-                    deckManager.ReceiveRoll(TurnManager.TurnOwner.Player, res);
-            });
+                RollDiceForTurn((res) => HandleAttributeRollResult(TurnManager.TurnOwner.Player, res), true);
+            }
+            else
+            {
+                RollDiceForTurn((res) =>
+                {
+                    if (deckManager != null)
+                        deckManager.ReceiveRoll(TurnManager.TurnOwner.Player, res);
+                });
+            }
         }
 
-        public void RollDiceForTurn(Action<int> onCompleteCallback)
+        public void RollDiceForTurn(Action<int> onCompleteCallback, bool skipEnergy = false)
         {
             if (isRolling)
             {
@@ -110,7 +129,7 @@ namespace GameLogic
                 return;
             }
 
-            if (turnManager != null && turnManager.currentTurn == TurnManager.TurnOwner.Enemy)
+            if (!skipEnergy && turnManager != null && turnManager.currentTurn == TurnManager.TurnOwner.Enemy)
             {
                 EnergyManager em = energyManager != null ? energyManager : (turnManager != null ? turnManager.energyManager : null);
                 if (em != null)
@@ -209,6 +228,31 @@ namespace GameLogic
         {
             if (diceRenderer != null && diceRenderer.material != null)
                 diceRenderer.material.color = c;
+        }
+
+        bool NeedsAttributeRoll(TurnManager.TurnOwner owner)
+        {
+            if (turnManager == null || turnManager.attributeManager == null) return false;
+            return turnManager.IsWaitingForAttributeRoll(owner);
+        }
+
+        void HandleAttributeRollResult(TurnManager.TurnOwner owner, int result)
+        {
+            var attr = turnManager != null ? turnManager.attributeManager : null;
+            if (attr == null)
+            {
+                if (enableDebugLogs) Debug.LogWarning("[DiceRoller] AttributeManager não está definido.");
+                return;
+            }
+
+            bool applied = attr.TryApplyInitialRoll(owner, result);
+            if (!applied)
+            {
+                if (enableDebugLogs) Debug.LogWarning("[DiceRoller] Rolagem de atributo ignorada (já definida?).");
+                return;
+            }
+
+            turnManager?.NotifyAttributeRollComplete(owner);
         }
     }
 }

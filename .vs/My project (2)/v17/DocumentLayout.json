@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\My project (2)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|d:\\my project (2)\\assets\\gamelogic\\cardevolutionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\cardevolutionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|d:\\my project (2)\\assets\\gamelogic\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\lifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\lifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\deckui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,34 +74,145 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CameraAdapter.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\CameraAdapter.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\CameraAdapter.cs",
+              "DocumentIndex": 0,
+              "Title": "CardEvolutionManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CardEvolutionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CardEvolutionManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CardEvolutionManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CardEvolutionManager.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAADgv3kAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T14:51:28.086Z"
+              "WhenOpened": "2025-11-18T00:35:08.801Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnergyUIManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyUIManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\EnergyUIManager.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAvwFMAAABHAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CombatManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CombatManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CombatManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CombatManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CombatManager.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAADgv3YAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T00:23:56.165Z"
+              "WhenOpened": "2025-11-17T20:05:30.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LifeManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\LifeManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\LifeManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\LifeManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\LifeManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T22:44:57.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeckUI.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DeckUI.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\DeckUI.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DeckUI.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\DeckUI.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T22:05:48.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Deck.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\Deck.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\Deck.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\Deck.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\Deck.cs",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAqwBUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T22:05:09.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DiceRoller_FullDebug.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\DiceRoller_FullDebug.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\DiceRoller_FullDebug.cs",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAswBYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T22:04:53.392Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "DeckManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\DeckManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\DeckManager.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAIA+wCAAAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T05:34:59.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TurnManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\TurnManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\TurnManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\TurnManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\TurnManager.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAqwIcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T05:21:16.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MonsterZoneSlot.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\MonsterZoneSlot.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\MonsterZoneSlot.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\MonsterZoneSlot.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\MonsterZoneSlot.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAA4wD4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T04:53:13.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CardFactory.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CardFactory.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CardFactory.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CardFactory.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CardFactory.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAqwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T04:53:08.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HandManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\HandManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\HandManager.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAADwv1YAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T04:52:44.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "EnergyManager.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyManager.cs",
@@ -106,115 +225,29 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LifeManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\LifeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\LifeManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\LifeManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\LifeManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Title": "EnergyUIManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyUIManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\EnergyUIManager.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAvwFMAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T22:44:57.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DeckUI.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DeckUI.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\DeckUI.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DeckUI.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\DeckUI.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T22:05:48.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Deck.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\Deck.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\Deck.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\Deck.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\Deck.cs",
-              "ViewState": "AgIAAAIBAAAAAAAAAAAqwBUBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T22:05:09.621Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DiceRoller_FullDebug.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\DiceRoller_FullDebug.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\DiceRoller_FullDebug.cs",
-              "ViewState": "AgIAAAEBAAAAAAAAAAAswBYBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T22:04:53.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DeckManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\DeckManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\DeckManager.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAvwCAAAAB4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T05:34:59.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T00:23:56.165Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TurnManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\TurnManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\TurnManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\TurnManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\TurnManager.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAqwIcAAAAAAAAAAAAAAA==",
+              "Title": "CameraAdapter.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CameraAdapter.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CameraAdapter.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T05:21:16.914Z"
+              "WhenOpened": "2025-11-14T14:51:28.086Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MonsterZoneSlot.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\MonsterZoneSlot.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\MonsterZoneSlot.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\MonsterZoneSlot.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\MonsterZoneSlot.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAA4wD4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T04:53:13.218Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CardFactory.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CardFactory.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\CardFactory.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CardFactory.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\CardFactory.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAqwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T04:53:08.483Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HandManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\HandManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\HandManager.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAqwI4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T04:52:44.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "MonsterZone.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\MonsterZone.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\MonsterZone.cs",
@@ -226,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "CardUI.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CardUI.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\CardUI.cs",

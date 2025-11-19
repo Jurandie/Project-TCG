@@ -12,6 +12,8 @@ namespace GameLogic
         [Header("Referencias de UI")]
         public Text playerHPText;
         public Text enemyHPText;
+        public LifeBadgeUI playerLifeUI;
+        public LifeBadgeUI enemyLifeUI;
 
         [Header("Configuracoes de Debug")]
         public bool debugLogs = true;
@@ -74,15 +76,19 @@ namespace GameLogic
 
             if (target == TurnManager.TurnOwner.Player)
             {
-                playerCurrentHP -= amount;
+                playerCurrentHP = Mathf.Max(0, playerCurrentHP - amount);
+                playerLifeUI?.UpdateLife(playerCurrentHP);
+                playerLifeUI?.PlayDamageAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Jogador tomou {amount} de dano -> HP atual: {playerCurrentHP}");
-                if (playerCurrentHP <= 0) { playerCurrentHP = 0; playerDead = true; OnDeath(target); }
+                if (playerCurrentHP <= 0) { playerDead = true; OnDeath(target); }
             }
             else
             {
-                enemyCurrentHP -= amount;
+                enemyCurrentHP = Mathf.Max(0, enemyCurrentHP - amount);
+                enemyLifeUI?.UpdateLife(enemyCurrentHP);
+                enemyLifeUI?.PlayDamageAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Inimigo tomou {amount} de dano -> HP atual: {enemyCurrentHP}");
-                if (enemyCurrentHP <= 0) { enemyCurrentHP = 0; enemyDead = true; OnDeath(target); }
+                if (enemyCurrentHP <= 0) { enemyDead = true; OnDeath(target); }
             }
 
             UpdateUI();
@@ -94,14 +100,16 @@ namespace GameLogic
 
             if (target == TurnManager.TurnOwner.Player)
             {
-                playerCurrentHP += amount;
-                if (playerCurrentHP > playerStartingHP) playerCurrentHP = playerStartingHP;
+                playerCurrentHP = Mathf.Min(playerStartingHP, playerCurrentHP + amount);
+                playerLifeUI?.UpdateLife(playerCurrentHP);
+                playerLifeUI?.PlayHealAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Jogador curou {amount} -> HP atual: {playerCurrentHP}");
             }
             else
             {
-                enemyCurrentHP += amount;
-                if (enemyCurrentHP > enemyStartingHP) enemyCurrentHP = enemyStartingHP;
+                enemyCurrentHP = Mathf.Min(enemyStartingHP, enemyCurrentHP + amount);
+                enemyLifeUI?.UpdateLife(enemyCurrentHP);
+                enemyLifeUI?.PlayHealAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Inimigo curou {amount} -> HP atual: {enemyCurrentHP}");
             }
 
@@ -134,6 +142,9 @@ namespace GameLogic
                 playerHPText.text = playerCurrentHP.ToString();
             if (enemyHPText != null)
                 enemyHPText.text = enemyCurrentHP.ToString();
+
+            playerLifeUI?.SetIntensity((float)playerCurrentHP / Mathf.Max(1, playerStartingHP));
+            enemyLifeUI?.SetIntensity((float)enemyCurrentHP / Mathf.Max(1, enemyStartingHP));
         }
 
         public int GetCurrentHP(TurnManager.TurnOwner target)

@@ -3,11 +3,23 @@
   "WorkspaceRootPath": "D:\\My project (2)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|d:\\my project (2)\\assets\\gamelogic\\cameraadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\cameraadapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|d:\\my project (2)\\assets\\gamelogic\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\combatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|d:\\my project (2)\\assets\\gamelogic\\energyuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\GameLogic\\CameraAdapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\energyuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\energyuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,24 +27,12 @@
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\energymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\diceroller_fulldebug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\diceroller_fulldebug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\turnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\deckmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\lifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\lifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\handmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\deckui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,6 +57,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|D:\\My project (2)\\assets\\gamelogic\\monsterzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0F74257-F6B2-DCEA-FC51-AA11C694D4B0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamelogic\\monsterzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\GameLogic\\DiceRoller_FullDebug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -71,44 +75,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CameraAdapter.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\CameraAdapter.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\CameraAdapter.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAmwF4AAAAAAAAAAAAAAA==",
+              "Title": "CombatManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CombatManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CombatManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CombatManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CombatManager.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAADgv3YAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T14:51:28.086Z",
+              "WhenOpened": "2025-11-17T20:05:30.786Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EnergyUIManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyUIManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\EnergyUIManager.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAvwFMAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T00:23:56.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EnergyManager.cs",
-              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyManager.cs",
-              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyManager.cs",
-              "RelativeToolTip": "Assets\\GameLogic\\EnergyManager.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAADwv9AAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T23:06:08.498Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "LifeManager.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\LifeManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\LifeManager.cs",
@@ -144,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "DiceRoller_FullDebug.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DiceRoller_FullDebug.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\DiceRoller_FullDebug.cs",
@@ -156,19 +135,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "DeckManager.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\DeckManager.cs",
               "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\DeckManager.cs",
               "RelativeToolTip": "Assets\\GameLogic\\DeckManager.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAAAqwM0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAIA+wCAAAAB4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T05:34:59.244Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "TurnManager.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\TurnManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\TurnManager.cs",
@@ -204,15 +183,50 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "HandManager.cs",
               "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
               "RelativeDocumentMoniker": "Assets\\GameLogic\\HandManager.cs",
               "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\HandManager.cs",
               "RelativeToolTip": "Assets\\GameLogic\\HandManager.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAqwI4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAADwv1YAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T04:52:44.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnergyManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\EnergyManager.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAADwv9AAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T23:06:08.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnergyUIManager.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\EnergyUIManager.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\EnergyUIManager.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\EnergyUIManager.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAvwFMAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:23:56.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CameraAdapter.cs",
+              "DocumentMoniker": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
+              "RelativeDocumentMoniker": "Assets\\GameLogic\\CameraAdapter.cs",
+              "ToolTip": "D:\\My project (2)\\Assets\\GameLogic\\CameraAdapter.cs",
+              "RelativeToolTip": "Assets\\GameLogic\\CameraAdapter.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T14:51:28.086Z"
             },
             {
               "$type": "Document",

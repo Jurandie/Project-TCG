@@ -138,6 +138,17 @@ namespace GameLogic
             RefreshVisual();
         }
 
+        public CardData TakeFromDiscard()
+        {
+            if (discardPile.Count == 0)
+                return null;
+
+            int last = discardPile.Count - 1;
+            var card = discardPile[last];
+            discardPile.RemoveAt(last);
+            return card;
+        }
+
         void RefreshVisual()
         {
             float fill = drawPile.Count / Mathf.Max(1f, (float)totalCardsStart);

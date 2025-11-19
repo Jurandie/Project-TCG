@@ -89,6 +89,8 @@ namespace GameLogic
                 return;
             }
 
+            ui.ResetForHandContainer();
+            ui.SetOwner(isEnemy ? TurnManager.TurnOwner.Enemy : TurnManager.TurnOwner.Player);
             configure?.Invoke(ui);
             ui.cardBackSprite = cardBackSprite;
 
