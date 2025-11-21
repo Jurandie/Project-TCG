@@ -66,6 +66,8 @@ namespace GameLogic
                 return;
             }
 
+            bool isSacred = card.IsSacredSpell;
+
             var context = new SpellCastContext
             {
                 owner = owner,
@@ -79,7 +81,9 @@ namespace GameLogic
                 enemyZone = enemyZone,
                 attributeManager = attributeManager,
                 targetSelectionManager = targetSelectionManager,
-                caster = this
+                caster = this,
+                isSacredSpell = isSacred,
+                targetAllies = isSacred
             };
 
             effect.Resolve(context);
@@ -124,6 +128,8 @@ namespace GameLogic
         public SpellCastManager caster;
         public CardUI card;
         public bool deferCleanup;
+        public bool isSacredSpell;
+        public bool targetAllies;
 
         public void DeferCleanup()
         {

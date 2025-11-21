@@ -24,6 +24,11 @@ namespace GameLogic
         private bool playerDead = false;
         private bool enemyDead = false;
 
+        public delegate int ModifyDamageDelegate(TurnManager.TurnOwner target, int incomingDamage);
+        public event ModifyDamageDelegate OnModifyDamage;
+        public event System.Action<TurnManager.TurnOwner, int> OnDamageApplied;
+        public event System.Action<TurnManager.TurnOwner, int> OnHealApplied;
+
         void Start()
         {
             ResetLife();
@@ -70,27 +75,51 @@ namespace GameLogic
                 Debug.Log("[LifeManager] HP inicializado: Player=" + playerCurrentHP + " | Enemy=" + enemyCurrentHP);
         }
 
+        int ApplyDamageModifiers(TurnManager.TurnOwner target, int amount)
+        {
+            int modified = amount;
+            if (OnModifyDamage != null)
+            {
+                foreach (ModifyDamageDelegate handler in OnModifyDamage.GetInvocationList())
+                {
+                    try
+                    {
+                        modified = Mathf.Max(0, handler(target, modified));
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Debug.LogException(ex);
+                    }
+                }
+            }
+            return modified;
+        }
+
         public void TakeDamage(TurnManager.TurnOwner target, int amount)
         {
             if (amount <= 0) return;
+            int finalAmount = ApplyDamageModifiers(target, Mathf.Max(0, amount));
+            if (finalAmount <= 0)
+                return;
 
             if (target == TurnManager.TurnOwner.Player)
             {
-                playerCurrentHP = Mathf.Max(0, playerCurrentHP - amount);
+                playerCurrentHP = Mathf.Max(0, playerCurrentHP - finalAmount);
                 playerLifeUI?.UpdateLife(playerCurrentHP);
                 playerLifeUI?.PlayDamageAnimation();
-                if (debugLogs) Debug.Log($"[LifeManager] Jogador tomou {amount} de dano -> HP atual: {playerCurrentHP}");
+                if (debugLogs) Debug.Log($"[LifeManager] Jogador tomou {finalAmount} de dano -> HP atual: {playerCurrentHP}");
                 if (playerCurrentHP <= 0) { playerDead = true; OnDeath(target); }
             }
             else
             {
-                enemyCurrentHP = Mathf.Max(0, enemyCurrentHP - amount);
+                enemyCurrentHP = Mathf.Max(0, enemyCurrentHP - finalAmount);
                 enemyLifeUI?.UpdateLife(enemyCurrentHP);
                 enemyLifeUI?.PlayDamageAnimation();
-                if (debugLogs) Debug.Log($"[LifeManager] Inimigo tomou {amount} de dano -> HP atual: {enemyCurrentHP}");
+                if (debugLogs) Debug.Log($"[LifeManager] Inimigo tomou {finalAmount} de dano -> HP atual: {enemyCurrentHP}");
                 if (enemyCurrentHP <= 0) { enemyDead = true; OnDeath(target); }
             }
 
+            OnDamageApplied?.Invoke(target, finalAmount);
             UpdateUI();
         }
 
@@ -104,6 +133,7 @@ namespace GameLogic
                 playerLifeUI?.UpdateLife(playerCurrentHP);
                 playerLifeUI?.PlayHealAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Jogador curou {amount} -> HP atual: {playerCurrentHP}");
+                OnHealApplied?.Invoke(TurnManager.TurnOwner.Player, amount);
             }
             else
             {
@@ -111,6 +141,7 @@ namespace GameLogic
                 enemyLifeUI?.UpdateLife(enemyCurrentHP);
                 enemyLifeUI?.PlayHealAnimation();
                 if (debugLogs) Debug.Log($"[LifeManager] Inimigo curou {amount} -> HP atual: {enemyCurrentHP}");
+                OnHealApplied?.Invoke(TurnManager.TurnOwner.Enemy, amount);
             }
 
             UpdateUI();

@@ -7,7 +7,7 @@ using TMPro;
 namespace GameLogic
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+    public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Dados da Carta")]
         public Card runtimeCard;
@@ -47,6 +47,10 @@ namespace GameLogic
         bool hasInitialSize;
         [SerializeField] TranscendentAttackManager transcendentAttackManager;
         [SerializeField] SpellTargetSelectionManager spellTargetSelectionManager;
+        CardStatusTracker statusTracker;
+        CardStatusEffectHandler statusEffectHandler;
+        CardPreviewDisplay previewDisplay;
+        HoldInspectHandler holdInspector;
         TurnManager.TurnOwner ownerSide = TurnManager.TurnOwner.Player;
 
         void Awake()
@@ -60,6 +64,13 @@ namespace GameLogic
                 transcendentAttackManager = FindFirstObjectByType<TranscendentAttackManager>();
             if (spellTargetSelectionManager == null)
                 spellTargetSelectionManager = FindFirstObjectByType<SpellTargetSelectionManager>();
+            statusTracker = GetComponent<CardStatusTracker>();
+            if (statusTracker == null)
+                statusTracker = gameObject.AddComponent<CardStatusTracker>();
+            statusEffectHandler = GetComponent<CardStatusEffectHandler>();
+            if (statusEffectHandler == null)
+                statusEffectHandler = gameObject.AddComponent<CardStatusEffectHandler>();
+            holdInspector = GetComponent<HoldInspectHandler>();
         }
 
         public void Setup(Card card)
@@ -197,6 +208,8 @@ namespace GameLogic
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            holdInspector?.CancelHold();
+            previewDisplay?.Hide(this);
             if (isBackVisible) return;
             if (moveCoroutine != null) StopCoroutine(moveCoroutine);
 
@@ -273,7 +286,12 @@ namespace GameLogic
                                (runtimeCard != null && runtimeCard.Kind == CardData.CardType.Spell);
         public bool IsEquipment => (cardData != null && cardData.cardType == CardData.CardType.Equipment) ||
                                    (runtimeCard != null && runtimeCard.Kind == CardData.CardType.Equipment);
+        public bool IsSacredSpell => runtimeCard != null && runtimeCard.IsSacredSpell;
+        public bool IsTranscendent => CurrentVisuals.isTranscendent;
         public TurnManager.TurnOwner OwnerSide => ownerSide;
+        public bool IsSilenced => statusEffectHandler != null && statusEffectHandler.IsSilenced;
+        public CardStatusTracker StatusTracker => statusTracker;
+        public bool IsInHand => currentSlot == null;
 
         void SmoothSnapToSlot(MonsterZoneSlot slot)
         {
@@ -303,6 +321,22 @@ namespace GameLogic
                 return false;
 
             CurrentTier++;
+            hasLockedVisuals = false;
+            transcendentStatsApplied = false;
+            RefreshVisuals();
+            return true;
+        }
+
+        public bool DowngradeTier(int tiers)
+        {
+            if (cardData == null)
+                return false;
+
+            int targetTier = Mathf.Max(1, CurrentTier - Mathf.Abs(tiers));
+            if (targetTier == CurrentTier)
+                return false;
+
+            CurrentTier = targetTier;
             hasLockedVisuals = false;
             transcendentStatsApplied = false;
             RefreshVisuals();
@@ -444,7 +478,12 @@ namespace GameLogic
                 statsText.text = $"ATK {cachedVisuals.attack} / DEF {cachedVisuals.defense}";
 
             if (artImage != null)
-                artImage.sprite = cachedVisuals.sprite ?? runtimeCard?.Artwork ?? cardData?.artwork;
+            {
+                Sprite sprite = cachedVisuals.sprite ?? runtimeCard?.Artwork ?? cardData?.artwork;
+                if (runtimeCard != null && runtimeCard.IsSacredSpell && runtimeCard.sacredArtworkOverride != null)
+                    sprite = runtimeCard.sacredArtworkOverride;
+                artImage.sprite = sprite;
+            }
         }
 
         IEnumerator SmoothMove(Vector2 from, Vector2 to, float duration, System.Action onComplete = null)
@@ -491,8 +530,36 @@ namespace GameLogic
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (eventData != null && eventData.button == PointerEventData.InputButton.Right && IsInHand && ownerSide == TurnManager.TurnOwner.Player)
+            {
+                previewDisplay = previewDisplay ?? CardPreviewDisplay.EnsureInstance();
+                previewDisplay?.Show(this);
+                eventData.Use();
+                return;
+            }
+
+            if (holdInspector != null && holdInspector.ConsumeClickBlock())
+            {
+                eventData?.Use();
+                return;
+            }
+
             if (isBackVisible)
                 return;
+
+            if (IsSilenced)
+            {
+                Debug.Log("[Card] Esta carta está silenciada e não pode agir.");
+                eventData?.Use();
+                return;
+            }
+
+            if (statusEffectHandler != null && statusEffectHandler.IsStunned)
+            {
+                Debug.Log("[Card] Esta carta está atordoada e não pode agir.");
+                eventData?.Use();
+                return;
+            }
 
             if (IsEquipment)
             {
@@ -514,9 +581,26 @@ namespace GameLogic
             }
         }
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (previewDisplay == null)
+                previewDisplay = CardPreviewDisplay.EnsureInstance();
+
+            if (previewDisplay == null || !IsInHand || ownerSide != TurnManager.TurnOwner.Player)
+                return;
+
+            previewDisplay.Show(this);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            previewDisplay?.Hide(this);
+        }
+
         public void SetOwner(TurnManager.TurnOwner owner)
         {
             ownerSide = owner;
         }
     }
 }
+

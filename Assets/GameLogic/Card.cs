@@ -15,12 +15,17 @@ namespace GameLogic
         public string LoreDescription;
         public Sprite Artwork;
         public Sprite CardBack;
+        public Sprite sacredArtworkOverride;
+        public Sprite PreviewBoard;
         public CardData.CardType Kind = CardData.CardType.Monster;
         public int CurrentTier = 1;
         public CardData SourceData;
         public int Durability;
         public bool IsTranscendentFormAvailable;
         public bool DurabilityDisabled;
+        public bool IsSacredSpell;
+        public bool IsUndead;
+        public string PreviewDescription;
 
         public Card() { }
 
@@ -36,12 +41,17 @@ namespace GameLogic
             EnergyCost = data.energyCost;
             Keywords = data.keywords;
             LoreDescription = data.loreDescription;
+            PreviewDescription = data.previewDescription;
             Artwork = data.artwork;
+            PreviewBoard = data.previewBoard;
             CardBack = data.cardBackOverride;
             Kind = data.cardType;
+            IsUndead = data.isUndead;
             Durability = data.durability;
             IsTranscendentFormAvailable = data.isTranscendentFormAvailable;
             DurabilityDisabled = false;
+            IsSacredSpell = false;
+            sacredArtworkOverride = null;
         }
 
         public void ApplyTier(CardVisuals visuals, int tier)

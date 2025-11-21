@@ -29,9 +29,14 @@ namespace GameLogic
         public string[] keywords;
         [TextArea]
         public string loreDescription;
+        [TextArea]
+        public string previewDescription;
+        public Sprite previewBoard;
 
         [Header("Tipo")]
         public CardType cardType = CardType.Monster;
+        [Tooltip("Marca cartas do tipo Morto-vivo / Undead.")]
+        public bool isUndead = false;
 
         [Header("Feitiço (apenas quando tipo = Spell)")]
         public CardSpellEffect spellEffect;

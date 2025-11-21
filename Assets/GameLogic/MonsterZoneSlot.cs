@@ -94,6 +94,7 @@ namespace GameLogic
         }
 
         public MonsterZone ParentZone => parentZone;
+        public CardUI CurrentCard => currentCard;
 
         bool BelongsToZone(CardUI cardUI)
         {

@@ -14,9 +14,15 @@ namespace GameLogic
         [Header("Tempo de Vida")]
         public int turnsAlive = 2;
 
-        [Header("Dano do Feitiço")]
+        [Header("Dano do Feitico")]
         public int baseDamage = 5;
         public float criticalMultiplier = 2f;
+
+        [Header("Versao Sagrada")]
+        public Sprite sacredArtwork;
+        public string sacredNameSuffix = " (Sagrado)";
+        [TextArea]
+        public string sacredDescriptionOverride;
 
         public override void Resolve(SpellCastContext context)
         {
@@ -38,20 +44,29 @@ namespace GameLogic
             if (context == null)
                 return;
 
+            bool isSacred = context.isSacredSpell;
+
             if (outcome == SpellCastOutcome.CriticalFail)
             {
                 Debug.Log("[UnstableReanimation] Falha crítica! A magia foi cancelada.");
+                if (!isSacred)
+                    GiveSacredCopyToOpponent(context);
                 context.FinalizeSpell();
                 return;
             }
 
-            int damage = baseDamage;
+            int effectAmount = baseDamage;
             if (outcome == SpellCastOutcome.CriticalSuccess)
-                damage = Mathf.RoundToInt(damage * criticalMultiplier);
+                effectAmount = Mathf.RoundToInt(effectAmount * criticalMultiplier);
             else if (outcome == SpellCastOutcome.Fail)
-                damage = Mathf.Max(1, damage / 2);
-            else if (outcome == SpellCastOutcome.CriticalFail)
-                damage = 0;
+                effectAmount = Mathf.Max(1, effectAmount / 2);
+
+            if (isSacred)
+            {
+                ApplySacredResolution(context, choice, Mathf.Max(1, effectAmount));
+                context.FinalizeSpell();
+                return;
+            }
 
             bool allowCorruption = outcome == SpellCastOutcome.Success || outcome == SpellCastOutcome.CriticalSuccess;
             Card capturedCard = null;
@@ -59,14 +74,14 @@ namespace GameLogic
             {
                 if (context.lifeManager != null)
                 {
-                    context.lifeManager.TakeDamage(choice.heroOwner, damage);
-                    context.lifeManager.Heal(context.owner, Mathf.Max(1, damage / 2));
-                    Debug.Log($"[UnstableReanimation] Herói {choice.heroOwner} sofreu {damage} de dano.");
+                    context.lifeManager.TakeDamage(choice.heroOwner, effectAmount);
+                    context.lifeManager.Heal(context.owner, Mathf.Max(1, effectAmount / 2));
+                    Debug.Log($"[UnstableReanimation] Herói {choice.heroOwner} sofreu {effectAmount} de dano.");
                 }
             }
             else if (choice.monster != null)
             {
-                capturedCard = ApplyDamageToMonster(context, choice.monster, damage, allowCorruption);
+                capturedCard = ApplyDamageToMonster(context, choice.monster, effectAmount, allowCorruption);
             }
 
             if (capturedCard == null)
@@ -77,6 +92,35 @@ namespace GameLogic
             }
 
             context.FinalizeSpell();
+        }
+
+        void ApplySacredResolution(SpellCastContext context, SpellTargetChoice choice, int healAmount)
+        {
+            if (choice.isHero)
+            {
+                context.lifeManager?.Heal(choice.heroOwner, healAmount);
+                Debug.Log($"[UnstableReanimation] Herói {choice.heroOwner} foi curado em {healAmount}.");
+                return;
+            }
+
+            if (choice.monster != null)
+                HealMonster(choice.monster, healAmount);
+        }
+
+        void HealMonster(CardUI targetCard, int amount)
+        {
+            if (targetCard == null)
+                return;
+
+            var runtime = targetCard.runtimeCard;
+            if (runtime == null)
+                return;
+
+            int maxPoints = runtime.MaxHealth > 0 ? runtime.MaxHealth : Mathf.Max(runtime.Defense, 1);
+            runtime.Defense = Mathf.Clamp(runtime.Defense + amount, 0, maxPoints);
+            targetCard.Setup(runtime);
+            targetCard.ShowFront();
+            Debug.Log($"[UnstableReanimation] Monstro restaurado em {amount} pontos (DEF atual {runtime.Defense}).");
         }
 
         Card ApplyDamageToMonster(SpellCastContext context, CardUI targetCard, int damage, bool allowCorruption)
@@ -99,8 +143,7 @@ namespace GameLogic
                 var slot = targetCard.CurrentSlot;
                 if (slot != null)
                     slot.ClearSlot();
-                if (targetCard != null)
-                    Object.Destroy(targetCard.gameObject);
+                Destroy(targetCard.gameObject);
                 Debug.Log("[UnstableReanimation] Monstro destruído mas resistiu ao efeito (sem corrupção).");
                 return null;
             }
@@ -110,8 +153,7 @@ namespace GameLogic
             var targetSlot = targetCard.CurrentSlot;
             if (targetSlot != null)
                 targetSlot.ClearSlot();
-            if (targetCard != null)
-                Object.Destroy(targetCard.gameObject);
+            Destroy(targetCard.gameObject);
             return captured;
         }
 
@@ -227,10 +269,46 @@ namespace GameLogic
             copy.LoreDescription = original.LoreDescription;
             copy.Kind = original.Kind;
             copy.CurrentTier = original.CurrentTier;
-             copy.Durability = original.Durability;
-             copy.DurabilityDisabled = original.DurabilityDisabled;
-             copy.IsTranscendentFormAvailable = original.IsTranscendentFormAvailable;
+            copy.Durability = original.Durability;
+            copy.DurabilityDisabled = original.DurabilityDisabled;
+            copy.IsTranscendentFormAvailable = original.IsTranscendentFormAvailable;
+            copy.IsSacredSpell = original.IsSacredSpell;
+            copy.sacredArtworkOverride = original.sacredArtworkOverride;
             return copy;
+        }
+
+        void GiveSacredCopyToOpponent(SpellCastContext context)
+        {
+            if (context == null || context.handManager == null)
+                return;
+
+            Card sacredCard = null;
+            if (context.card != null)
+            {
+                if (context.card.runtimeCard != null)
+                    sacredCard = CloneCard(context.card.runtimeCard);
+                else if (context.card.cardData != null)
+                    sacredCard = new Card(context.card.cardData);
+            }
+
+            if (sacredCard == null)
+                return;
+
+            sacredCard.IsSacredSpell = true;
+            sacredCard.Kind = CardData.CardType.Spell;
+            if (sacredArtwork != null)
+                sacredCard.sacredArtworkOverride = sacredArtwork;
+            if (!string.IsNullOrEmpty(sacredNameSuffix))
+                sacredCard.Name = string.Concat(sacredCard.Name, sacredNameSuffix);
+            if (!string.IsNullOrEmpty(sacredDescriptionOverride))
+                sacredCard.LoreDescription = sacredDescriptionOverride;
+
+            bool giveToEnemy = context.owner == TurnManager.TurnOwner.Player;
+            context.handManager.AddCardToHand(sacredCard, giveToEnemy);
+            Debug.Log("[UnstableReanimation] Falha critica criou uma versao sagrada da magia para o oponente.");
         }
     }
 }
+
+
+

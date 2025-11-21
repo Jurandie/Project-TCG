@@ -15,6 +15,8 @@ namespace GameLogic
         public CharacterAttributeManager attributeManager;
         public HeroAttackAnimator playerAnimator;
         public HeroAttackAnimator enemyAnimator;
+        HeroStatusEffectHandler playerHeroStatus;
+        HeroStatusEffectHandler enemyHeroStatus;
 
         [Header("Configuração de Dano")]
         public int baseDamage = 4;
@@ -43,6 +45,8 @@ namespace GameLogic
                 playerAnimator = FindAnimator(TurnManager.TurnOwner.Player);
             if (enemyAnimator == null)
                 enemyAnimator = FindAnimator(TurnManager.TurnOwner.Enemy);
+
+            CacheHeroStatusHandlers();
 
             if (turnManager != null)
                 turnManager.OnTurnStarted += OnTurnStarted;
@@ -110,6 +114,13 @@ namespace GameLogic
                     if (logCombat) Debug.Log($"[Combat] {attacker} precisa definir atributos antes de atacar.");
                     return false;
                 }
+            }
+
+            var heroStatus = GetHeroStatusHandler(attacker);
+            if (heroStatus != null && heroStatus.IsSilenced)
+            {
+                if (logCombat) Debug.Log($"[Combat] {attacker} está silenciado e não pode atacar.");
+                return false;
             }
 
             return true;
@@ -252,6 +263,36 @@ namespace GameLogic
             }
 
             return null;
+        }
+
+        void CacheHeroStatusHandlers()
+        {
+            var handlers = FindObjectsByType<HeroStatusEffectHandler>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (var handler in handlers)
+            {
+                var tracker = handler.GetComponent<HeroStatusTracker>();
+                if (tracker == null)
+                    continue;
+
+                if (tracker.owner == TurnManager.TurnOwner.Player)
+                    playerHeroStatus = handler;
+                else if (tracker.owner == TurnManager.TurnOwner.Enemy)
+                    enemyHeroStatus = handler;
+            }
+        }
+
+        HeroStatusEffectHandler GetHeroStatusHandler(TurnManager.TurnOwner owner)
+        {
+            if (owner == TurnManager.TurnOwner.Player)
+            {
+                if (playerHeroStatus == null)
+                    CacheHeroStatusHandlers();
+                return playerHeroStatus;
+            }
+
+            if (enemyHeroStatus == null)
+                CacheHeroStatusHandlers();
+            return enemyHeroStatus;
         }
     }
 }

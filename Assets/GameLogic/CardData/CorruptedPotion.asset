@@ -17,3 +17,8 @@ MonoBehaviour:
   attackMultiplier: 1.4
   defenseMultiplier: 1.2
   turnsAlive: 2
+  baseDamage: 5
+  criticalMultiplier: 2
+  sacredArtwork: {fileID: 21300000, guid: 367938b72918d3a49a17d4635785c1c4, type: 3}
+  sacredNameSuffix: ' (Sagrado)'
+  sacredDescriptionOverride: 

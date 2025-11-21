@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 99566461459669733}
   - component: {fileID: 7510585757590073981}
   - component: {fileID: 2664816267654437972}
+  - component: {fileID: 8675381482068159627}
   m_Layer: 5
   m_Name: CardUI
   m_TagString: Untagged
@@ -93,8 +94,21 @@ MonoBehaviour:
     Name: 
     Attack: 0
     Defense: 0
+    MaxHealth: 0
+    Armor: 0
+    EnergyCost: 1
+    Keywords: []
+    LoreDescription: 
     Artwork: {fileID: 0}
     CardBack: {fileID: 0}
+    sacredArtworkOverride: {fileID: 0}
+    Kind: 0
+    CurrentTier: 1
+    SourceData: {fileID: 0}
+    Durability: 0
+    IsTranscendentFormAvailable: 0
+    DurabilityDisabled: 0
+    IsSacredSpell: 0
   cardData: {fileID: 0}
   nameText: {fileID: 0}
   statsText: {fileID: 0}
@@ -105,6 +119,8 @@ MonoBehaviour:
   snapDuration: 0.1
   bounceScale: 1.08
   bounceDuration: 0.08
+  transcendentAttackManager: {fileID: 0}
+  spellTargetSelectionManager: {fileID: 0}
 --- !u!225 &2664816267654437972
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -117,3 +133,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &8675381482068159627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195627717714821033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cdc30b9bfd024408f7239b275dc6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameLogic.HoldInspectHandler
+  holdDuration: 0.6
+  sheetDisplay: {fileID: 0}
+  inspectHero: 0
+  heroOwner: 0
+  cardUI: {fileID: 0}

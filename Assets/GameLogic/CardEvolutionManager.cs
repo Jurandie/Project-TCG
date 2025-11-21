@@ -13,7 +13,7 @@ namespace GameLogic
             public readonly List<CardUI> cards = new List<CardUI>();
         }
 
-        Dictionary<TurnManager.TurnOwner, Dictionary<string, Dictionary<int, CardGroup>>> tracker =
+        readonly Dictionary<TurnManager.TurnOwner, Dictionary<string, Dictionary<int, CardGroup>>> tracker =
             new Dictionary<TurnManager.TurnOwner, Dictionary<string, Dictionary<int, CardGroup>>>();
 
         public void OnCardPlaced(TurnManager.TurnOwner owner, CardUI card)
@@ -143,7 +143,33 @@ namespace GameLogic
             }
 
             Debug.Log("[CardEvolution] Carta alcançou forma transcendida. Clique nela para atacar.");
-            attackManager?.ClearSelection(card); // garante que seleção antiga não persista
+            attackManager?.ClearSelection(card);
+        }
+
+        public bool ForceDowngrade(CardUI card, int tiers)
+        {
+            if (card == null || card.cardData == null || tiers <= 0)
+                return false;
+
+            var slot = card.CurrentSlot;
+            TurnManager.TurnOwner owner = slot != null ? slot.ParentZone.owner : card.OwnerSide;
+
+            var bucket = GetGroup(owner, card.cardData.cardName, card.CurrentTier, false);
+            bucket?.cards.Remove(card);
+
+            bool changed = card.DowngradeTier(tiers);
+            if (!changed)
+            {
+                if (bucket != null && !bucket.cards.Contains(card))
+                    bucket.cards.Add(card);
+                return false;
+            }
+
+            var newBucket = GetGroup(owner, card.cardData.cardName, card.CurrentTier);
+            if (!newBucket.cards.Contains(card))
+                newBucket.cards.Add(card);
+
+            return true;
         }
     }
 }

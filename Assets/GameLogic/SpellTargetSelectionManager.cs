@@ -52,6 +52,7 @@ namespace GameLogic
 
         public bool IsSelecting => pendingEffect != null;
         public TurnManager.TurnOwner ExpectedTargetOwner => expectedTargetOwner;
+        bool TargetingAllies => pendingContext != null && pendingContext.targetAllies;
 
         public void BeginSelection(SpellCastContext context, UnstableReanimationSpellEffect effect)
         {
@@ -60,9 +61,13 @@ namespace GameLogic
 
             pendingContext = context;
             pendingEffect = effect;
-            expectedTargetOwner = context.owner == TurnManager.TurnOwner.Player ? TurnManager.TurnOwner.Enemy : TurnManager.TurnOwner.Player;
+            bool targetAllies = TargetingAllies;
+            expectedTargetOwner = targetAllies ? context.owner :
+                (context.owner == TurnManager.TurnOwner.Player ? TurnManager.TurnOwner.Enemy : TurnManager.TurnOwner.Player);
             context.DeferCleanup();
-            Debug.Log("[SpellTarget] Selecione um herói ou monstro inimigo para a magia.");
+            Debug.Log(targetAllies
+                ? "[SpellTarget] Selecione um herói aliado ou monstro transcendente para receber a cura."
+                : "[SpellTarget] Selecione um herói ou monstro inimigo para a magia.");
         }
 
         public bool TrySelectHero(TurnManager.TurnOwner target)
@@ -91,11 +96,10 @@ namespace GameLogic
                 return false;
             }
 
+            bool targetingAllies = TargetingAllies;
             var slot = card.CurrentSlot;
             var zone = slot != null ? slot.ParentZone : null;
-            MonsterZone expectedZone = pendingContext != null
-                ? (pendingContext.owner == TurnManager.TurnOwner.Player ? pendingContext.enemyZone : pendingContext.playerZone)
-                : null;
+            MonsterZone expectedZone = targetingAllies ? GetCasterZone(true) : GetCasterZone(false);
 
             bool zoneMatches = true;
             if (expectedZone != null)
@@ -105,13 +109,32 @@ namespace GameLogic
 
             if (slot == null || zone == null || !zoneMatches)
             {
-                Debug.Log("[SpellTarget] Esta carta não pertence ao oponente.");
+                Debug.Log(targetingAllies
+                    ? "[SpellTarget] Esta carta não pertence ao seu lado."
+                    : "[SpellTarget] Esta carta não pertence ao oponente.");
+                return false;
+            }
+
+            if (targetingAllies && !card.IsTranscendent)
+            {
+                Debug.Log("[SpellTarget] Apenas monstros transcendentes aliados podem receber essa magia.");
                 return false;
             }
 
             pendingChoice = SpellTargetChoice.Monster(card);
             TriggerRoll();
             return true;
+        }
+
+        MonsterZone GetCasterZone(bool wantCasterZone)
+        {
+            if (pendingContext == null)
+                return null;
+
+            bool casterIsPlayer = pendingContext.owner == TurnManager.TurnOwner.Player;
+            if (wantCasterZone)
+                return casterIsPlayer ? pendingContext.playerZone : pendingContext.enemyZone;
+            return casterIsPlayer ? pendingContext.enemyZone : pendingContext.playerZone;
         }
 
         void TriggerRoll()
